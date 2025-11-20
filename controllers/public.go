@@ -89,7 +89,9 @@ func GetTimeDuration(startTime string,endTime string) string {
 
 // 转换任意时区到CST
 func GetCSTtime(date string) string {
-	var t time.Time
+	var t time.Time                                                       
+    var cstLoc *time.Location                                                                
+    cstLoc = time.FixedZone("CST", 8*3600)
 	if date == "" {
 		// 获取当前时间并转换为 CST
 		t = time.Now().In(cstLoc)
